@@ -1,0 +1,19 @@
+name: Latest Youtube videos
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # Every day at 5 AM
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme-with-Youtube:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          commit_tag_name: "YOUTUBE"
+          feedlist: https://www.youtube.com/feeds/videos.xml?channel_id=UC8NDpwTbsFSeP7dkbl4hKeQ
